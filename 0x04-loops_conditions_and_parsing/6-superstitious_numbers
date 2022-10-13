@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # display numbers from 1 to 20 using while and case statement and prints badluck from various countries
-x=0
-while [ $x -lt 20 ]; do
-	(( x+=1 ))
-	echo "$x"
-	case $x in
+counter=0
+while [ $counter -lt 20 ]; do
+	(( counter+=1 ))
+	echo "$counter"
+	case $counter in
 		4 )
 			echo "bad luck from China"
 		;;
