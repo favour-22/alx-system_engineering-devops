@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 #This script is displaying "best school 10" times using while loop
 x=0
+
 while [ $x -lt 10 ]
 do
-    echo "Best School"
-    x=$(( x + 1 ))
-    if [[ $x -eq 9 ]]
-then
-        echo "hi"
-    fi	
+  if [ $x -eq 9 ]
+  then
+    echo "Hi"
+  fi
+  echo "Best School"
+  (( x++ ))
 done
+
