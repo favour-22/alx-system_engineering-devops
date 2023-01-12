@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Get the current date
+date=$(date +"%d-%m-%Y")
+
+# Get the password from the command line argument
+password=$1
+
+# Dump all MySQL databases
+mysqldump --user=root --password=$password --all-databases > backup.sql
+
+# Compress the dump file to a tar.gz archive
+tar -czvf "$date".tar.gz backup.sql
+
+# Remove the dump file
+rm backup.sql
