@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
+# run nginx s nginx user
+# nginx must be listening on all active IPS on port 8080
+# you cannot use apt-get remove
+# this script configures the container to fit the above requirements
 
-# Script to configure Nginx to run as the nginx user and listen on all active IPs on port 8080
+file='/etc/nginx/sites-available/default'
 
-# Stop the current Nginx service
-service nginx stop
+# kill apache2 server
+pkill -f apache2
 
-# Change the user and group that Nginx runs as
-sed -i 's/user www-data;/user nginx;/g' /etc/nginx/nginx.conf
+chmod 777 /etc/nginx/nginx.conf
 
-# Change the listen port to 8080
-sed -i 's/listen 80;/listen 0.0.0.0:8080;/g' /etc/nginx/sites-available/default
+# update listening ports
+sed -i 's/80/8080/g' $file
 
-# Start the Nginx service as the nginx user
-service nginx start
+# restart nginx as nginx
+sudo -u nginx service nginx restart
