@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-
-# Script to run the 'whoami' command under a specific user
-
-if [ $# -eq 0 ]; then
-  echo "Error: No argument provided. Please provide a user name as an argument."
-    exit 1
-    fi
-
-    sudo -u $1 whoami
-
+# accept one argument
+# runs the whoami command under the user passed as an argument
+sudo -u "$1" 'whoami'
