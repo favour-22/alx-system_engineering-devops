@@ -1,5 +1,11 @@
- #!/usr/bin/env bash
-# A Bash script that accepts one argument
-# The script run the 'whoami' command under the user passed as an argument
+#!/usr/bin/env bash
 
-sudo -u "$1" whoami
+# Script to run the 'whoami' command under a specific user
+
+if [ $# -eq 0 ]; then
+  echo "Error: No argument provided. Please provide a user name as an argument."
+    exit 1
+    fi
+
+    sudo -u $1 whoami
+
