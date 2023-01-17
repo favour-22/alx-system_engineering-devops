@@ -1,33 +1,28 @@
-import json
-import urllib.request
-import sys
+#!/usr/bin/python3
+import json  """ The json module allows you to work with JSON data in Python. It provides functions for parsing JSON data and converting Python objects to JSON"""
+import urllib.request  """ The urllib.request module provides functions for opening URLs, sending HTTP requests, and handling the response. It is used to make a GET request to the REST API"""
+import sys  """ The sys module provides functions and variables used to manipulate different parts of the Python runtime environment. It is used to get command-line arguments passed to the script"""
 
-# Function to get employee name
+
 def get_employee_name(employee_id):
-    url = "https://jsonplaceholder.typicode.com/users/" + str(employee_id)
-    response = urllib.request.urlopen(url)
-    data = json.loads(response.read())
-    return data['name']
+    """Function to get employee name"""
+    url = "https://jsonplaceholder.typicode.com/users/" + str(employee_id)  """ construct the url with employee id """
+    response = urllib.request.urlopen(url)  # use the urlopen function to send a GET request to the url and assign the response to the variable
+    data = json.loads(response.read())  # use the json.loads function to convert the response from json format to a Python object
+    return data['name']  # return the employee name from the data
 
-# Function to get employee's tasks
+
 def get_employee_tasks(employee_id):
-    url = "https://jsonplaceholder.typicode.com/todos?userId=" + str(employee_id)
-    response = urllib.request.urlopen(url)
-    data = json.loads(response.read())
-    return data
+    """ Function to get employee's tasks """
+    url = "https://jsonplaceholder.typicode.com/todos?userId=" + str(employee_id)  # construct the url with employee id
+    response = urllib.request.urlopen(url)  # use the urlopen function to send a GET request to the url and assign the response to the variable
+    data = json.loads(response.read())  # use the json.loads function to convert the response from json format to a Python object
+    return data  # return the employee's tasks
 
-if len(sys.argv) < 2:
+if len(sys.argv) < 2:  """ check if an employee id was passed as an argument """
     print("Error: Please provide an employee ID as an argument.")
     sys.exit(1)
 
-employee_id = int(sys.argv[1])
+employee_id = int(sys.argv[1])  # get the employee id passed as an argument and convert it to int
 
-employee_name = get_employee_name(employee_id)
-employee_tasks = get_employee_tasks(employee_id)
-
-completed_tasks = [task for task in employee_tasks if task['completed'] == True]
-total_tasks = len(employee_tasks)
-
-print("Employee {} is done with tasks({}/{}):".format(employee_name, len(completed_tasks), total_tasks))
-for task in completed_tasks:
-    print("\t {}".format(task['title']))
+employee_name = get_employee_name(employee_id)  # call the get_employ
