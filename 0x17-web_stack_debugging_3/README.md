@@ -13,6 +13,6 @@ root@63ca2686979b:~# puppet apply 0-strace_is_your_friend.pp
 ```
 
 ### Author
-- [Alex Yu](https://github.com/AlexYu01)
+- [favour-22](https://github.com/favour-22)
 ### Acknowledgments
 - [Holberton](https://www.holbertonschool.com/)
