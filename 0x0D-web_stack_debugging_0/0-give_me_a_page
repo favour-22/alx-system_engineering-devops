@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
-# Start Apache so as to return a
-# page conatining Hello Holberton
-service apache2 start
+
+# Install Apache if it's not already installed
+if ! command -v apache2 &> /dev/null
+then
+    sudo apt-get update
+    sudo apt-get install -y apache2
+fi
+
+# Create an HTML file containing "Hello Holberton"
+echo "<html><body>Hello Holberton</body></html>" | sudo tee /var/www/html/index.html > /dev/null
+
+# Start Apache
+sudo service apache2 start
