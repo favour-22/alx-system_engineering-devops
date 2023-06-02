@@ -1,14 +1,5 @@
 #!/usr/bin/env bash
-
-# Install Apache if it's not already installed
-if ! command -v apache2 &> /dev/null
-then
-    sudo apt-get update
-    sudo apt-get install -y apache2
-fi
-
-# Create an HTML file containing "Hello Holberton"
-echo "<html><body>Hello Holberton</body></html>" | sudo tee /var/www/html/index.html > /dev/null
-
-# Start Apache
-sudo service apache2 start
+# Fix server with servername pointing to localhost
+apt-get install apache2 -y
+echo "ServerName localhost" >> /etc/apache2/apache2.conf
+service apache2 start
